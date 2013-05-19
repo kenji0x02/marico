@@ -1,0 +1,14 @@
+{
+  "name": "appletv",
+  "maker": "apple",
+  "modelNumber": "MC572J/A",
+  "signals": {
+    "up":          "82EE870B470000",
+    "down":        "82EE870D470000",
+    "left":        "82EE8708470000",
+    "right":       "82EE8707470000",
+    "ok":          "82EE875D470000",
+    "menu":        "82EE8702470000",
+    "stepForward": "82EE875E470000"
+   } 
+}

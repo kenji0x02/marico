@@ -1,0 +1,16 @@
+{
+  "name": "marico",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node marico.js"
+  },
+  "dependencies": {
+    "express": "3.2.0",
+    "ejs": "0.8.3",
+    "socket.io": "0.9.14",
+    "express-partials": "0.1.1",
+    "jsdom": "0.6.0",
+    "request": "2.20.0"
+  }
+}

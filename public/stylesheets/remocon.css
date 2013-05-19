@@ -1,0 +1,33 @@
+body {
+  background-color: #eee;
+}
+.remocon-button {
+  width: 70px;
+  height: 20px; /*文字サイズと合わせる*/
+  padding: 22px 10px;
+  margin-bottom: 4px;
+}
+.up-down-button {
+  width: 257px;
+  padding: 5px 10px;
+  margin-bottom: 4px;
+}
+.marquee {
+  position:relative;
+  overflow:hidden;
+}
+/* テレビ局名表示用span */
+.station-name {
+  position:absolute;/*アンカーの属性から逃れるために絶対位置を指定*/
+  top: 8px;
+  left: 0px;/*bootstrapのspan属性を継承しないように直接指定*/
+  width: 90px;/*ボタンの幅*/
+}
+/* 番組情報表示用span */
+.program-info {
+  position:absolute;/*アンカーの属性から逃れるために絶対位置を指定*/
+  top: 36px;
+  left: 0px;/*bootstrapのspan属性を継承しないように直接指定*/
+  white-space: nowrap;
+  display: block;
+}
