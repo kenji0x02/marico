@@ -1,7 +1,7 @@
 marico
 ======
 
-javascriptだけで作るmy remocon
+javascriptだけで作る**マ**イ**リ**モ**コ**ン
 
 用意するもの
 ----
