@@ -20,7 +20,11 @@ iPod touchからテレビのチャンネルを変える
 ![iPhoneやiPad、iPod touchからテレビのチャンネルを変えることができます](./md-image/screen-shot-tv.png "ボタンをクリックするとチャンネルが変わります")
   
   
-構成
+ネットワーク構成の例
 ---
+  
+  
+![ネットワーク図の例です](./md-image/network-diagram.png "ネットワーク図の例です")
+  
 
 
