@@ -15,6 +15,11 @@ h3 {
   padding: 5px 10px;
   margin-bottom: 4px;
 }
+.close-display-info {
+  width: 257px;
+  padding: 2px 10px;
+  margin-bottom: 0px;
+}
 .marquee {
   position:relative;
   overflow:hidden;
@@ -33,4 +38,33 @@ h3 {
   left: 0px;/*bootstrapのspan属性を継承しないように直接指定*/
   white-space: nowrap;
   display: block;
+}
+.expander {
+  background: #ddd;
+  top: auto;
+  width: 277px;
+  margin-bottom: 4px;
+}
+.expander h4 {
+  text-align: center;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.expander p {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+}
+span.start-time {
+  color: #888;
+  padding-left: 10px;
+}
+span.end-time {
+  color: #888;
+  padding-right: 10px;
+  float: right;
+}
+.progress {
+  margin-bottom: 0px;
 }
