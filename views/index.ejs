@@ -2,43 +2,43 @@
   <div class="row">
     <!-- チャンネル系 -->
     <div class="span12">
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch1')" id="nhk">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch1">
         <span class="station-name">nhk</span>
         <span class="program-info"></span>
       </a>
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch2')" id="etv">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch2">
         <span class="station-name">etv</span>
         <span class="program-info"></span>
       </a>
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch3')" id="chiba">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch3">
         <span class="station-name">chiba</span>
         <span class="program-info"></span>
       </a>
     </div>
     <div class="span12">
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch4')" id="ntv">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch4">
         <span class="station-name">ntv</span>
         <span class="program-info"></span>
       </a>
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch5')" id="asahi">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch5">
         <span class="station-name">asahi</span>
         <span class="program-info"></span>
       </a>
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch6')" id="tbs">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch6">
         <span class="station-name">tbs</span>
         <span class="program-info"></span>
       </a>
     </div>
     <div class="span12">
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch7')" id="tokyo">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch7">
         <span class="station-name">tokyo</span>
         <span class="program-info"></span>
       </a>
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch8')" id="fuji">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch8">
         <span class="station-name">fuji</span>
         <span class="program-info"></span>
       </a>
-      <a class="btn btn-primary btn-large remocon-button marquee" onClick="commandEmit('ch9')" id="mx">
+      <a class="btn btn-primary btn-large remocon-button marquee" id="ch9">
         <span class="station-name">mx</span>
         <span class="program-info"></span>
       </a>
@@ -60,21 +60,21 @@
     </div>
     <!-- メインスイッチ系 -->
     <div class="span12">
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('switchInput')"></a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('recordList')"><i class="icon-list icon-white"></i></a>
-      <a class="btn btn-danger btn-large remocon-button" onClick="commandEmit('power')"><i class="icon-off icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id="switchInput"></a>
+      <a class="btn btn-primary btn-large remocon-button" id='recordList'><i class="icon-list icon-white"></i></a>
+      <a class="btn btn-danger btn-large remocon-button" id='power'><i class="icon-off icon-white"></i></a>
     </div>
     <!-- ボリューム系 -->
     <div class="span12">
-      <a class="btn btn-warning btn-large remocon-button" onClick="commandEmit('volumeOff')"><i class="icon-volume-off icon-white"></i></a>
-      <a class="btn btn-warning btn-large remocon-button" onClick="commandEmit('volumeDown')"><i class="icon-volume-down icon-white"></i></a>
-      <a class="btn btn-warning btn-large remocon-button" onClick="commandEmit('volumeUp')"><i class="icon-volume-up icon-white"></i></a>
+      <a class="btn btn-warning btn-large remocon-button" id='volumeOff'><i class="icon-volume-off icon-white"></i></a>
+      <a class="btn btn-warning btn-large remocon-button" id='volumeDown'><i class="icon-volume-down icon-white"></i></a>
+      <a class="btn btn-warning btn-large remocon-button" id='volumeUp'><i class="icon-volume-up icon-white"></i></a>
     </div>
     <!-- 画面切り替え系 -->
     <div class="span12">
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('back')"><i class="icon-undo icon-white"></i></a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('finish')"><i class="icon-remove icon-white"></i></a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('tvListings')"><i class="icon-table icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='back'><i class="icon-undo icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='finish'><i class="icon-remove icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='tvListings'><i class="icon-table icon-white"></i></a>
     </div>
     <!-- up/downボタン -->
     <div class="span12">
@@ -84,29 +84,29 @@
     <div class="row collapse" id="arrowMode">
       <div class="span12">
         <div class="span12">
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('doubleLeft')"><i class="icon-chevron-left icon-white"></i><i class="icon-chevron-left icon-white"></i></a>
-          <a class="btn btn-info btn-large remocon-button" onClick="commandEmit('up')"><i class="icon-chevron-up icon-white"></i></a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('doubleRight')"><i class="icon-chevron-right icon-white"></i><i class="icon-chevron-right icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='doubleLeft'><i class="icon-chevron-left icon-white"></i><i class="icon-chevron-left icon-white"></i></a>
+          <a class="btn btn-info btn-large remocon-button" id='up'><i class="icon-chevron-up icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='doubleRight'><i class="icon-chevron-right icon-white"></i><i class="icon-chevron-right icon-white"></i></a>
         </div>
         <div class="span12">
-          <a class="btn btn-info btn-large remocon-button" onClick="commandEmit('left')"><i class="icon-chevron-left icon-white"></i></a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('ok')">OK</a>
-          <a class="btn btn-info btn-large remocon-button" onClick="commandEmit('right')"><i class="icon-chevron-right icon-white"></i></a>
+          <a class="btn btn-info btn-large remocon-button" id='left'><i class="icon-chevron-left icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='ok'>OK</a>
+          <a class="btn btn-info btn-large remocon-button" id='right'><i class="icon-chevron-right icon-white"></i></a>
         </div>
         <div class="span12">
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('doubleUP')"><i class="icon-chevron-up icon-white"></i><i class="icon-chevron-up icon-white"></i></a>
-          <a class="btn btn-info btn-large remocon-button" onClick="commandEmit('down')"><i class="icon-chevron-down icon-white"></i></a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('doubleDown')"><i class="icon-chevron-down icon-white"></i><i class="icon-chevron-down icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='doubleUP'><i class="icon-chevron-up icon-white"></i><i class="icon-chevron-up icon-white"></i></a>
+          <a class="btn btn-info btn-large remocon-button" id='down'><i class="icon-chevron-down icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='doubleDown'><i class="icon-chevron-down icon-white"></i><i class="icon-chevron-down icon-white"></i></a>
         </div>
         <!-- 色指定動作系 -->
         <div class="span12">
-          <a class="btn btn-danger btn-large remocon-button" onClick="commandEmit('red')"><i class="icon-heart icon-white"></i></a>
-          <a class="btn btn-success btn-large remocon-button" onClick="commandEmit('green')"><i class="icon-leaf icon-white"></i></a>
-          <a class="btn btn-warning btn-large remocon-button" onClick="commandEmit('yellow')"><i class="icon-trophy icon-white"></i></a>
+          <a class="btn btn-danger btn-large remocon-button" id='red'><i class="icon-heart icon-white"></i></a>
+          <a class="btn btn-success btn-large remocon-button" id='green'><i class="icon-leaf icon-white"></i></a>
+          <a class="btn btn-warning btn-large remocon-button" id='yellow'><i class="icon-trophy icon-white"></i></a>
         </div>
         <div class="span12">
           <a class="btn btn-primary btn-large remocon-button disabled">&nbsp; </a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('blue')"><i class="icon-umbrella icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='blue'><i class="icon-umbrella icon-white"></i></a>
           <a class="btn btn-primary btn-large remocon-button disabled">&nbsp; </a>
         </div>
       </div>
@@ -120,18 +120,18 @@
       <div class="span12">
         <div class="span12">
           <!-- <div> -->
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('backward')"><i class="icon-backward icon-white"></i></a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('play')"><i class="icon-play icon-white"></i></a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('forward')"><i class="icon-forward icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='backward'><i class="icon-backward icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='play'><i class="icon-play icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='forward'><i class="icon-forward icon-white"></i></a>
         </div>
         <div class="span12">
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('fastBackward')"><i class="icon-fast-backward icon-white"></i></a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('stop')"><i class="icon-stop icon-white"></i></a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('fastForward')"><i class="icon-fast-forward icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='fastBackward'><i class="icon-fast-backward icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='stop'><i class="icon-stop icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='fastForward'><i class="icon-fast-forward icon-white"></i></a>
         </div>
         <div class="span12">
           <a class="btn btn-primary btn-large remocon-button disabled">&nbsp; </a>
-          <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('pause')"><i class="icon-pause icon-white"></i></a>
+          <a class="btn btn-primary btn-large remocon-button" id='pause'><i class="icon-pause icon-white"></i></a>
           <a class="btn btn-primary btn-large remocon-button disabled">&nbsp; </a>
         </div>
       </div>

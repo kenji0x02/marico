@@ -1,3 +1,4 @@
+// -- utils関数 --
 // yyyyMMddHHmmを時間に変換
 // javascriptにはstrftimeがない、、、
 String.prototype.toTime = function() {
@@ -8,7 +9,6 @@ String.prototype.toTime = function() {
   var minutes = this.substr(10, 2) - 0;
   var second = 0;
   var time = new Date(fullYear, month, date, hours, minutes, second);
-  console.log(time);
   return time;
 };
 
@@ -23,50 +23,31 @@ function progressTime(startTime, endTime) {
   }
   return progressTimeHour + ":" + progressTimeMinute;
 }
-// クリック音を鳴らす
-function playSound() {
-  document.getElementById("playSound").play();
-}
 
-var socket = io.connect();
-
+// -- 設定値 --
 // urlからリモコンの種類を読み込む
 var remoconName = location.href.split('/')[3];
 if (remoconName == "") remoconName = "tv";
+// チャンネルと放送局のマッピング
+var channelNum = {
+  nhk:   'ch1',
+  etv:   'ch2',
+  chiba: 'ch3',
+  ntv:   'ch4',
+  asahi: 'ch5',
+  tbs:   'ch6',
+  tokyo: 'ch7',
+  fuji:  'ch8',
+  mx:    'ch9'
+};
 
-function commandEmit(action){
-  playSound();
-  var command = {
-    action: action,
-    remoconName: remoconName
-  }
+// -- ソケットを受信したときの処理 --
+var socket = io.connect();
 
-  socket.emit('commandEmit', command);
-
-  // 番組表／録画リスト表示ボタンを押したとき、
-  // 矢印系が非表示だったら表示する
-  if (action == "tvListings" || action == "recordList") {
-    if (document.getElementById("arrowMode").clientHeight == 0) {
-      $('#arrowMode').collapse('show');
-    }
-  }
-
-  // 終了ボタンを押したとき、矢印系またはプレイ系が表示されていたら非表示に
-  if (action == "finish") {
-    if (document.getElementById("arrowMode").clientHeight != 0) {
-      $('#arrowMode').collapse('hide');
-    }
-    if (document.getElementById("playMode").clientHeight != 0) {
-      $('#playMode').collapse('hide');
-    }
-  }
-}
-
-// ソケットを受信したときの処理
 socket.on('message', function(message) {
   programLists = JSON.parse(message);
   for(var station in programLists) {
-    var domID = '#' + station;
+    var domID = '#' + channelNum[station];
     var domIDSpan = domID + ' span.program-info';
     var beforeProgramInfo = $(domIDSpan).text();
     var beforeProgramInfoWidth = $(domIDSpan).width();
@@ -122,50 +103,118 @@ socket.on('message', function(message) {
   }
 });
 
-// リモコン指定バージョン
-function commandEmitWithRemocon(specifiedRemoconName, action){
+// -- ボタンを押したときの動作 --
+$('.btn').click(function(){
+  var action = $(this).attr('id');
+  // up-downボタンなどトグルだけで特に何も制御しなくてよい場合
+  if (action == null) { return; }
+
+  // リモコン操作
+  commandEmit($(this));
+  // ボタンの表示状態更新
+  updateButtonCollapse(action);
+  // 1ch〜9chまでのボタンでは番組情報表示
+  if (action.match(/^ch[1-9]$/)) {
+    updateProgramInfo($(this));
+  }
+  // クリック音を鳴らす
   playSound();
+});
+
+function commandEmit(elem){
+  var action = elem.attr('id');
+  // 開いているページのリモコン名と実際に使うリモコン名が違うとき更新する
+  // 例：appletvリモコンでテレビリモコンを使いたいとき
+  var transmitRemoconName = elem.attr('data-remocon-name') || remoconName;
   var command = {
     action: action,
-    remoconName: specifiedRemoconName
+    remoconName: transmitRemoconName
+  }
+  socket.emit('commandEmit', command);
+};
+
+function updateButtonCollapse(action){
+  // 番組表／録画リスト表示ボタンを押したとき、
+  // 矢印系が非表示だったら表示する
+  if (action == "tvListings" || action == "recordList") {
+    if (document.getElementById("arrowMode").clientHeight == 0) {
+      $('#arrowMode').collapse('show');
+    }
   }
 
-  socket.emit('commandEmit', command);
-  console.log("command emit");
-}
+  // 終了ボタンを押したとき、矢印系またはプレイ系が表示されていたら非表示に
+  if (action == "finish") {
+    if (document.getElementById("arrowMode").clientHeight != 0) {
+      $('#arrowMode').collapse('hide');
+    }
+    if (document.getElementById("playMode").clientHeight != 0) {
+      $('#playMode').collapse('hide');
+    }
+  }
+};
 
 // チャンネルボタンが押されたとき
-$('.marquee').click(function(){
+function updateProgramInfo(elem){
   // 閉じているときだけ開く
   if (document.getElementById("program-info").clientHeight == 0) {
     $('#program-info').collapse('show');
   }
-  var id = $(this).attr('id');
-  console.log(id);
   // 属性更新
-  var title = $(this).attr('data-title');
+  updateTitle(elem);
+  updateContent(elem);
+  updateProgressTime(elem);
+};
+
+function updateTitle(elem) {
+  var title = elem.attr('data-title');
+  if (title == null) { title = ''; }
   $("#program-info h4").text(title);
-  var content = $(this).attr('data-content');
+};
+
+function updateContent(elem) {
+  var content = elem.attr('data-content');
+  if (content == null) { content  = ''; }
   $("#program-info p").text(content);
-  // var startTimeHour = $(this).attr('data-start-time').substr(8, 2);
-  // var startTimeMinutes = $(this).attr('data-start-time').substr(10, 2);
-  // var displayStartTime = startTimeHour + ':' + startTimeMinutes;
-  // $("#program-info span.start-time").text(displayStartTime);
-  // var endTimeHour = $(this).attr('data-end-time').substr(8, 2);
-  // var endTimeMinutes = $(this).attr('data-end-time').substr(10, 2);
-  // var displayEndTime = endTimeHour + ':' + endTimeMinutes;
-  // $("#program-info span.end-time").text(displayEndTime);
-  // 放送進捗率
-  var startTime = ($(this).attr('data-start-time')).toTime();
-  var endTime = ($(this).attr('data-end-time')).toTime();
+};
+
+// 放送進捗率
+function updateProgressTime(elem) {
+  var startTime = (elem.attr('data-start-time'));
+  if (startTime == null) {
+    resetProgressTime();
+    return;
+  }
+  startTime = startTime.toTime();
+
+  var endTime = (elem.attr('data-end-time'));
+  if (endTime == null) {
+    resetProgressTime();
+    return;
+  }
+  endTime = endTime.toTime();
+
   var nowTime = new Date();
+
   var percentage = (nowTime.getTime() - startTime.getTime()) / (endTime.getTime() - startTime.getTime());
   percentage = parseInt(percentage * 100);
   var style = 'width: ' + percentage + '%;';
   $('#program-info .bar').attr('style', style);
+
   // 番組トータル時間と経過時間(YouTube風)
   var totalTime = progressTime(startTime, endTime);
   var nowProgressTime = progressTime(startTime, nowTime);
   $("#program-info span.start-time").text(nowProgressTime);
   $("#program-info span.end-time").text(totalTime);
-});
+};
+
+function resetProgressTime() {
+  var style = 'width: 0%;';
+  $('#program-info .bar').attr('style', style);
+  $("#program-info span.start-time").text('');
+  $("#program-info span.end-time").text('');
+};
+
+// クリック音を鳴らす
+function playSound() {
+  document.getElementById("playSound").play();
+};

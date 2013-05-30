@@ -1,24 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <a class="btn btn-danger btn-large remocon-button" onClick="commandEmitWithRemocon('tv','power')"><i class="icon-off icon-white"></i></a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('up')"><i class="icon-chevron-up icon-white"></i></a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmitWithRemocon('tv','switchInput')"></a>
+      <a class="btn btn-danger btn-large remocon-button" id='power' data-remocon-name='tv'><i class="icon-off icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='up'><i class="icon-chevron-up icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='switchInput' data-remocon-name='tv'></a>
     </div>
     <div class="span12">
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('left')"><i class="icon-chevron-left icon-white"></i></a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('ok')">OK</a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('right')"><i class="icon-chevron-right icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='left'><i class="icon-chevron-left icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='ok'>OK</a>
+      <a class="btn btn-primary btn-large remocon-button" id='right'><i class="icon-chevron-right icon-white"></i></a>
     </div>
     <div class="span12">
       <a class="btn btn-primary btn-large remocon-button disabled">&nbsp; </a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('down')"><i class="icon-chevron-down icon-white"></i></a>
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('stepForward')"><i class="icon-step-forward icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='down'><i class="icon-chevron-down icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='stepForward'><i class="icon-step-forward icon-white"></i></a>
     </div>
     <div class="span12">
-      <a class="btn btn-primary btn-large remocon-button" onClick="commandEmit('menu')">MENU</a>
-      <a class="btn btn-warning btn-large remocon-button" onClick="commandEmitWithRemocon('tv','volumeDown')"><i class="icon-volume-down icon-white"></i></a>
-      <a class="btn btn-warning btn-large remocon-button" onClick="commandEmitWithRemocon('tv','volumeUp')"><i class="icon-volume-up icon-white"></i></a>
+      <a class="btn btn-primary btn-large remocon-button" id='menu'>MENU</a>
+      <a class="btn btn-warning btn-large remocon-button" id='volumeDown' data-remocon-name='tv'><i class="icon-volume-down icon-white"></i></a>
+      <a class="btn btn-warning btn-large remocon-button" id='volumeUp' data-remocon-name='tv'><i class="icon-volume-up icon-white"></i></a>
     </div>
   </div>
 </div>
