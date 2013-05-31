@@ -101,6 +101,14 @@ socket.on('message', function(message) {
     }
     $(domID).marquee(marqueeOpt);
   }
+  // program-infoが開いているときだけ番組情報更新
+  if (document.getElementById("program-info").clientHeight != 0) {
+    // 表示中のチャンネルを取得
+    var station = $('#program-info span.program-info-station-name').text();
+    var channelId = "#" + channelNum[station];
+    // 取得したチャンネル情報を更新
+    updateProgramInfo($(channelId));
+  }
 });
 
 // -- ボタンを押したときの動作 --
@@ -162,6 +170,7 @@ function updateProgramInfo(elem){
   // 属性更新
   updateTitle(elem);
   updateContent(elem);
+  updateStation(elem);
   updateProgressTime(elem);
 };
 
@@ -176,6 +185,22 @@ function updateContent(elem) {
   if (content == null) { content  = ''; }
   $("#program-info p").text(content);
 };
+
+function updateStation(elem) {
+  var channel = elem.attr('id');
+  var station = findStation(channel);
+  if (station == null) { station  = ''; }
+  $("#program-info span.program-info-station-name").text(station);
+};
+
+function findStation(channel){
+  for(var key in channelNum) {
+    if(channelNum[key] == channel) {
+      return key;
+    }
+  }
+  return false;
+}
 
 // 放送進捗率
 function updateProgressTime(elem) {

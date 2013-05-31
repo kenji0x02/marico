@@ -44,6 +44,7 @@ h3 {
   top: auto;
   width: 277px;
   margin-bottom: 4px;
+  position: relative;
 }
 .expander h4 {
   text-align: center;
@@ -56,14 +57,22 @@ h3 {
   padding-right: 10px;
   margin-bottom: 0px;
 }
+.program-info-header {
+  text-align: center;
+}
 span.start-time {
   color: #888;
   padding-left: 10px;
+  float: left;
 }
 span.end-time {
   color: #888;
   padding-right: 10px;
   float: right;
+}
+span.program-info-station-name {
+  color: #888;
+  float: center;
 }
 .progress {
   margin-bottom: 0px;
