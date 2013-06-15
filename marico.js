@@ -38,11 +38,11 @@ server = http.createServer(app);
 server.listen(conf.socketio.port);
 
 // -- コマンド送信用 --
-var command = require('./lib/command');
+var command = require('./modules/command');
 command.setCodes(conf.remoconLists);
 
 // -- 番組情報取得用 --
-var scraping = require('./lib/scraping');
+var scraping = require('./modules/scraping');
 scraping.formatProgramList(conf.targetTVStation);
 
 // -- socket.io --
