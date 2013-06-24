@@ -2,7 +2,7 @@
 
 var jsdom    = require('jsdom').jsdom;
 var fs = require('fs');
-var jquery = fs.readFileSync('./public/javascripts/jquery.min.js').toString();
+var jquery = fs.readFileSync('./public/javascripts/lib/jquery.min.js').toString();
 var request = require('request');
 var utils = require('./utils');
 
@@ -61,10 +61,19 @@ scrapingProgramList = function(url, now, callback) {
         // 番組名
         var title = h1[1];
         // /<img src=(.+)>/でマッチングすると入れ子のときに対応できないので全通り直接マッチングする
-        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_n.gif>","");
-        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_tenki.gif>","");
         title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_moji.gif>","");
-        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_sai.gif>","");
+        if (title == "<img src=http://img.tv.msn.co.jp/s/ico_tenki.gif>") {
+          title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_tenki.gif>","天気予報");
+        }
+        if (title == "<img src=http://img.tv.msn.co.jp/s/ico_n.gif>") {
+          title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_n.gif>","ニュース");
+        }
+        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_tenki.gif>","");
+        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_n.gif>","");
+        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_sai.gif>","（再）");
+        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_taju.gif>","");
+        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_zen.gif>","（前編）");
+        title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_kou.gif>","（後編）");
         title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_eiga.gif>","");
         title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_taju.gif>","");
         title = title.replace("<img src=http://img.tv.msn.co.jp/s/ico_shin.gif>","");
@@ -125,6 +134,10 @@ scrapingProgramList = function(url, now, callback) {
           content = content.replace("<img src=http://img.tv.msn.co.jp/s/ico_tenki.gif>","天気予報");
           content = content.replace("<img src=http://img.tv.msn.co.jp/s/ico_n.gif>","ニュース");
           content = content.replace("<img src=http://img.tv.msn.co.jp/s/ico_moji.gif>","");
+          content = content.replace("<img src=http://img.tv.msn.co.jp/s/ico_sai.gif>","（再）");
+          content = content.replace("<img src=http://img.tv.msn.co.jp/s/ico_taju.gif>","");
+          content = content.replace("<img src=http://img.tv.msn.co.jp/s/ico_zen.gif>","（前編）");
+          content = content.replace("<img src=http://img.tv.msn.co.jp/s/ico_kou.gif>","（後編）");
         }
 
         // 番組情報
