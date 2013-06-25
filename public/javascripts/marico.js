@@ -381,4 +381,7 @@ $(function(){
     var toString = this + '';
     return toString.toTime();
   };
+
+  // iPhoneのURLバーを隠す
+  setTimeout(scrollTo, 100, 0, 1);
 });
