@@ -178,8 +178,30 @@ $(function(){
       }
       this.$el.marquee(marqueeOpt);
 
+      // 番組進捗率
+      var heightStyle = 'height: ' + this._calcProgressBarHeight() + 'px;'
+      this.$('.station-btn-progress').attr('style', heightStyle);
+      var style = 'width: ' + this.model.get('percentage')+ '%;';
+      this.$('.bar').attr('style', style);
+
       return this;
+    },
+
+    _calcProgressBarHeight: function() {
+      var minute = (this.model.get('endTime').getTime() - this.model.get('startTime').getTime())/60000;
+      // 60分で4ピクセル
+      var height = Math.round(minute / 60 * 4);
+      // 最小1ピクセル
+      if (height < 1) {
+        return 1;
+      }
+      // 1時間30分以上は6ピクセル
+      if (height >= 6) {
+        return 6;
+      }
+      return height;
     }
+
   });
 
   // class="tvchannel"の要素の数だけviewを作る

@@ -74,6 +74,22 @@ span.program-info-station-name {
   color: #888;
   float: center;
 }
+.station-btn-progress {
+  width: 90px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+/* bootstrapのクラスを継承 */
+.progress .bar {
+  /* プログレスバーの進捗率カラー(左側) */
+  background-color: #0f82f5;
+  /* デフォルトではプログレスバーに影が入るので削除 */
+  box-shadow: none;
+}
 .progress {
+  /* プログレスバーの背景(右側) */
+  /* 残りのコンテンツを視覚的に強調するために残りの割合を白色で表示する */
+  background-color: #eee;
   margin-bottom: 0px;
 }
