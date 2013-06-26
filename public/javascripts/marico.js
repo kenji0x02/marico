@@ -123,6 +123,8 @@ $(function(){
     initialize: function() {
       // 各TVStationのモデルとひもづける
       this.listenTo(this.model, 'change', this.render);
+      // 番組情報を取得するまでは局名を表示
+      this.$('.program-info').text(this.model.get('station'));
     },
 
     events: {
@@ -137,46 +139,15 @@ $(function(){
 
     render: function() {
       var domIDSpan = this.$('.program-info');
-
-      var beforeDisplayInfo = domIDSpan.text();
-      var beforeDisplayInfoWidth = domIDSpan.width();
-
-      // 番組情報表示テキスト作成
-      var iterateCnt = 3;
-      var spacer = "　　";
-      // 現在の表示情報を継承する
-      var displayInfo = beforeDisplayInfo;
-      if(beforeDisplayInfo.length == 0) spacer = "";
-
-      for(var i = 0; i < iterateCnt; i++) {
-        displayInfo = displayInfo + spacer + this.model.get('title');
-        // 全角スペース２文字で間隔を空けて表示
-        spacer = "　　";
+      // タイトルがないときは局名を代用
+      var displayTitle = this.model.get('title') || this.model.get('station');
+      domIDSpan.text(displayTitle);
+      // 行数に合わせて高さを調整
+      if (domIDSpan.css('height') == '24px') {
+        domIDSpan.css('top', '20px');
+      }else {
+        domIDSpan.css('top', '10px');
       }
-      domIDSpan.text(displayInfo);
-
-      // 終了時の位置を計算
-      var spacer = (domIDSpan.css('font-size').replace("px", "") - 0) * 2;// 全角スペース２文字分
-      var marqueeWidth = domIDSpan.width();
-      var offsetPosition = 0.25 * spacer;// 半角スペース分右にオフセットして表示
-      if(beforeDisplayInfo != 0) {
-        marqueeWidth = marqueeWidth - beforeDisplayInfoWidth - spacer;
-      }
-      var endPosition = 1.0 * (marqueeWidth - (iterateCnt - 1) * spacer) * (iterateCnt - 1) / iterateCnt + (iterateCnt - 1) * spacer - offsetPosition;
-
-      // 開始時の位置
-      // 親要素(anchor)のpaddingを含んだ横幅を開始位置として取得
-      var startPosition = this.$el.innerWidth();
-      if (beforeDisplayInfo != 0) startPosition = offsetPosition;
-
-      var marqueeOpt = {
-        marquee: domIDSpan
-        , startPosition: startPosition
-        , endPosition: endPosition
-        , callbackText: this.model.get('title')
-        , callbackLeft: offsetPosition
-      }
-      this.$el.marquee(marqueeOpt);
 
       // 番組進捗率
       var heightStyle = 'height: ' + this._calcProgressBarHeight() + 'px;'

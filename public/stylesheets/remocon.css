@@ -24,20 +24,20 @@ h3 {
   position:relative;
   overflow:hidden;
 }
-/* テレビ局名表示用span */
-.station-name {
-  position:absolute;/*アンカーの属性から逃れるために絶対位置を指定*/
-  top: 8px;
-  left: 0px;/*bootstrapのspan属性を継承しないように直接指定*/
-  width: 90px;/*ボタンの幅*/
-}
 /* 番組情報表示用span */
 .program-info {
   position:absolute;/*アンカーの属性から逃れるために絶対位置を指定*/
-  top: 36px;
+  /* 初期ロード時に局名を表示するデフォルトの位置。その後はjQueryで指定 */
+  top: 18px;
   left: 0px;/*bootstrapのspan属性を継承しないように直接指定*/
-  white-space: nowrap;
+  /* 改行を禁止する */
+  /* white-space: nowrap; */
   display: block;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 16px;
+  line-height: 24px;
+  width: 86px;
 }
 .expander {
   background: #ddd;
